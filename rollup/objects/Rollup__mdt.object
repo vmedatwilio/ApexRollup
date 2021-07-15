@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>CalcItemWhereClause__c</fullName>
+        <description>Enter in WHERE clause entries here to exclude items from your rollup calculation. You do not need to start with WHERE, but otherwise should proceed with valid SOQL syntax.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Enter in WHERE clause entries here to exclude items from your rollup calculation. You do not need to start with WHERE, but otherwise should proceed with valid SOQL syntax.</inlineHelpText>
+        <label>Calc Item Where Clause</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>CalcItem__c</fullName>
+        <description>Lookup to the SObject that will drive the rollup</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Lookup to the SObject that will drive the rollup</inlineHelpText>
+        <label>Calc Item</label>
+        <referenceTo>EntityDefinition</referenceTo>
+        <relationshipLabel>Rollups1</relationshipLabel>
+        <relationshipName>Rollups1</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ChangedFieldsOnCalcItem__c</fullName>
+        <description>Provide a comma-separated list of field API Names to consider prior to using records in the rollup</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Provide a comma-separated list of field API Names to consider prior to using records in the rollup</inlineHelpText>
+        <label>Changed Fields On Calc Item</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ConcatDelimiter__c</fullName>
+        <description>For CONCAT and CONCAT_DISTINCT operations, optionally override the delimiter used between concatened entries. Defaults to comma.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>For CONCAT and CONCAT_DISTINCT operations, optionally override the delimiter used between concatened entries. Defaults to comma.</inlineHelpText>
+        <label>Concat Delimiter</label>
+        <length>1</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FullRecalculationDefaultNumberValue__c</fullName>
+        <description>If provided, used in place of the existing value on the rollup field for the lookup object for number-based rollups</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If provided, used in place of the existing value on the rollup field for the lookup object for number-based rollups</inlineHelpText>
+        <label>Full Recalculation Default Number Value</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FullRecalculationDefaultStringValue__c</fullName>
+        <description>If provided, used in place of the existing value on the rollup field for the lookup object for String-based rollups</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If provided, used in place of the existing value on the rollup field for the lookup object for String-based rollups</inlineHelpText>
+        <label>Full Recalculation Default String Value</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GrandparentRelationshipFieldPath__c</fullName>
+        <description>If you are rolling up from grandchildren -&gt; grandparent (or greater), supply the field path to the ultimate parent field. As an example, if you were rolling up from Opp Line Items to Account AnnualRevenue, you would do &quot;Opportunity.Account.AnnualRevenue&quot;</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If you are rolling up from grandchildren -&gt; grandparent (or greater), supply the field path to the ultimate parent field. As an example, if you were rolling up from Opp Line Items to Account AnnualRevenue, you would do &quot;Opportunity.Account.AnnualRevenue&quot;</inlineHelpText>
+        <label>Grandparent Relationship Field Path</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsFullRecordSet__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If the calc items you are passing in comprise the entirety of the rollup values you&apos;d like, toggle this to ensure Rollup does not abort before clearing the lookup item&apos;s rollup value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If the calc items you are passing in comprise the entirety of the rollup values you&apos;d like, toggle this to ensure Rollup does not abort before clearing the lookup item&apos;s rollup value</inlineHelpText>
+        <label>Is Full Record Set</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsRollupStartedFromParent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Most rollups are initiated from the child object and rolled up to the parent - however, if you&apos;d like to have the rollup start from the parent and recalculate for all children when the parent is updated, check this box.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Most rollups are initiated from the child object and rolled up to the parent - however, if you&apos;d like to have the rollup start from the parent and recalculate for all children when the parent is updated, check this box.</inlineHelpText>
+        <label>Is Rollup Started From Parent</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LookupFieldOnCalcItem__c</fullName>
+        <description>The lookup field that matches the lookup field on the lookup object. Can be any kind of text/Id, so long as it matches!</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The lookup field that matches the lookup field on the lookup object. Can be any kind of text/Id, so long as it matches!</inlineHelpText>
+        <label>Lookup Field On Calc Item</label>
+        <metadataRelationshipControllingField>Rollup__mdt.CalcItem__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Rollups3</relationshipLabel>
+        <relationshipName>Rollups3</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LookupFieldOnLookupObject__c</fullName>
+        <description>The matching field on the lookup object</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The matching field on the lookup object</inlineHelpText>
+        <label>Lookup Field On Lookup Object</label>
+        <metadataRelationshipControllingField>Rollup__mdt.LookupObject__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Rollups1</relationshipLabel>
+        <relationshipName>Rollups1</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LookupObject__c</fullName>
+        <description>The object where the rollup will be written to</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The object where the rollup will be written to</inlineHelpText>
+        <label>Lookup Object</label>
+        <referenceTo>EntityDefinition</referenceTo>
+        <relationshipLabel>Rollups</relationshipLabel>
+        <relationshipName>Rollups</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrderByFirstLast__c</fullName>
+        <description>In FIRST or LAST operations, specify the string for the API Name of the field to order calc items by. Text is used instead of a Field Definition so that you can specify ordering by a parent&apos;s field.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>In FIRST or LAST operations, specify the string for the API Name of the field to order calc items by. Text is used instead of a Field Definition so that you can specify ordering by a parent&apos;s field.</inlineHelpText>
+        <label>Order By (First/Last)</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RollupControl__c</fullName>
+        <description>The Rollup Control metadata relationship in question</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The Rollup Control metadata relationship in question</inlineHelpText>
+        <label>Rollup Control</label>
+        <referenceTo>RollupControl__mdt</referenceTo>
+        <relationshipLabel>Rollups</relationshipLabel>
+        <relationshipName>Rollups</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RollupFieldOnCalcItem__c</fullName>
+        <description>The field on the calc item that will be rolled up</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The field on the calc item that will be rolled up</inlineHelpText>
+        <label>Rollup Field On Calc Item</label>
+        <metadataRelationshipControllingField>Rollup__mdt.CalcItem__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Rollups2</relationshipLabel>
+        <relationshipName>Rollups2</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RollupFieldOnLookupObject__c</fullName>
+        <description>The field on the lookup object that the rollup value will be written to</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The field on the lookup object that the rollup value will be written to</inlineHelpText>
+        <label>Rollup Field On Lookup Object</label>
+        <metadataRelationshipControllingField>Rollup__mdt.LookupObject__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Rollups</relationshipLabel>
+        <relationshipName>Rollups</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RollupOperation__c</fullName>
+        <description>The rollup operation you&apos;re looking to perform</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The rollup operation you&apos;re looking to perform</inlineHelpText>
+        <label>Rollup Operation</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>SUM</fullName>
+                    <default>true</default>
+                    <label>SUM</label>
+                </value>
+                <value>
+                    <fullName>MIN</fullName>
+                    <default>false</default>
+                    <label>MIN</label>
+                </value>
+                <value>
+                    <fullName>MAX</fullName>
+                    <default>false</default>
+                    <label>MAX</label>
+                </value>
+                <value>
+                    <fullName>AVERAGE</fullName>
+                    <default>false</default>
+                    <label>AVERAGE</label>
+                </value>
+                <value>
+                    <fullName>COUNT_DISTINCT</fullName>
+                    <default>false</default>
+                    <label>COUNT_DISTINCT</label>
+                </value>
+                <value>
+                    <fullName>COUNT</fullName>
+                    <default>false</default>
+                    <label>COUNT</label>
+                </value>
+                <value>
+                    <fullName>CONCAT</fullName>
+                    <default>false</default>
+                    <label>CONCAT</label>
+                </value>
+                <value>
+                    <fullName>CONCAT_DISTINCT</fullName>
+                    <default>false</default>
+                    <label>CONCAT_DISTINCT</label>
+                </value>
+                <value>
+                    <fullName>FIRST</fullName>
+                    <default>false</default>
+                    <label>FIRST</label>
+                </value>
+                <value>
+                    <fullName>LAST</fullName>
+                    <default>false</default>
+                    <label>LAST</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>RollupToUltimateParent__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When the Lookup Field On Lookup Object is a hierarchy/self-referential lookup field (looks up to the same object as the Lookup Object), check this box to roll all the way up to the ultimate parent in the hierarchy.</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>When the Lookup Field On Lookup Object is a hierarchy/self-referential lookup field (looks up to the same object as the Lookup Object), check this box to roll all the way up to the ultimate parent in the hierarchy.</inlineHelpText>
+        <label>Rollup To Ultimate Parent</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>UltimateParentLookup__c</fullName>
+        <description>Use in conjunction with &quot;Roll Up To Ultimate Parent&quot; to specify the hierarchical/self-referential lookup field on the Lookup Object that hold the values for the ultimate parent.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Use in conjunction with &quot;Roll Up To Ultimate Parent&quot; to specify the hierarchical/self-referential lookup field on the Lookup Object that hold the values for the ultimate parent.</inlineHelpText>
+        <label>Ultimate Parent Lookup</label>
+        <metadataRelationshipControllingField>Rollup__mdt.LookupObject__c</metadataRelationshipControllingField>
+        <referenceTo>FieldDefinition</referenceTo>
+        <relationshipLabel>Ultimate Parents</relationshipLabel>
+        <relationshipName>UltimateParent</relationshipName>
+        <required>false</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <label>Rollup</label>
+    <listViews>
+        <fullName>All_Rollups</fullName>
+        <columns>MasterLabel</columns>
+        <columns>DeveloperName</columns>
+        <columns>RollupOperation__c</columns>
+        <columns>CalcItem__c</columns>
+        <columns>RollupFieldOnCalcItem__c</columns>
+        <columns>LookupFieldOnCalcItem__c</columns>
+        <columns>LookupFieldOnLookupObject__c</columns>
+        <columns>RollupFieldOnLookupObject__c</columns>
+        <columns>RollupControl__c</columns>
+        <columns>LookupObject__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Rollups</label>
+    </listViews>
+    <pluralLabel>Rollups</pluralLabel>
+    <validationRules>
+        <fullName>Concat_Delimiter_Only_Valid_With_Concat</fullName>
+        <active>true</active>
+        <description>It&apos;s not valid to specify a concat delimiter with a non-concat operation</description>
+        <errorConditionFormula>AND(
+    NOT(
+      ISPICKVAL(RollupOperation__c, &apos;CONCAT&apos;)
+    ),
+    NOT(
+      ISPICKVAL(RollupOperation__c, &apos;CONCAT_DISTINCT&apos;)
+    ),
+  NOT(
+    ISBLANK(ConcatDelimiter__c)
+  )
+)</errorConditionFormula>
+        <errorMessage>Concat Delimiter should only be used with CONCAT or CONCAT_DISTINCT rollup operations</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Only_one_override_can_be_set</fullName>
+        <active>true</active>
+        <description>You can only set the string or number based override for assigning to the lookup object&apos;s rollup field</description>
+        <errorConditionFormula>AND(
+  NOT(ISBLANK(FullRecalculationDefaultStringValue__c)),
+  NOT(ISNULL(FullRecalculationDefaultNumberValue__c))
+)</errorConditionFormula>
+        <errorMessage>You can only set the string or number based override for assigning to the lookup object&apos;s rollup field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Ultimate_Parent_Invalid</fullName>
+        <active>true</active>
+        <description>You can only use RollUpToUltimateParent__c and UltimateParentLookup__c together</description>
+        <errorConditionFormula>OR(
+  AND(
+    NOT(RollupToUltimateParent__c),
+    NOT(ISBLANK(UltimateParentLookup__c))
+  ),
+  AND(
+    ISBLANK(UltimateParentLookup__c),
+    RollupToUltimateParent__c
+  )
+)</errorConditionFormula>
+        <errorMessage>You can only use RollUpToUltimateParent__c and UltimateParentLookup__c together!</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Can be used to throttle / control individual Rollup rules. Use &quot;Org_Defaults&quot; to control the defaults.</description>
+    <fields>
+        <fullName>BatchChunkSize__c</fullName>
+        <defaultValue>2000</defaultValue>
+        <description>The amount of records passed into each batchable job in the event that Rollup batches. Default is 2000, which is the vanilla Salesforce default.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The amount of records passed into each batchable job in the event that Rollup batches. Default is 2000, which is the vanilla Salesforce default.</inlineHelpText>
+        <label>Batch Chunk Size</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsMergeReparentingEnabled__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>If checked, Rollup will automatically reparent children records when a parent record is merged. If you have pre-existing merge handling, please uncheck this option!</description>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <inlineHelpText>If checked, Rollup will automatically reparent children records when a parent record is merged. If you have pre-existing merge handling, please uncheck this option!</inlineHelpText>
+        <label>Is Merge Reparenting Enabled</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsRollupLoggingEnabled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>By default, no rollup logging is enabled, and there are very few debug statements in Rollup. If this box is checked, at several key places in Rollup, debug statements will be shown.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>By default, no rollup logging is enabled, and there are very few debug statements in Rollup. If this box is checked, at several key places in Rollup, debug statements will be shown.</inlineHelpText>
+        <label>Is Rollup Logging Enabled</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MaxLookupRowsBeforeBatching__c</fullName>
+        <description>If a Rollup Limit is not supplied, this defaults to 3333</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>If a Rollup Limit is not supplied, this defaults to 3333</inlineHelpText>
+        <label>Max Lookup Rows Before Batching</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxNumberOfQueries__c</fullName>
+        <defaultValue>100</defaultValue>
+        <description>Configure this number to decide how many queries Rollup is allowed to issue before restarting in another context. Consider the downstream query needs when your parent objects are updated when configuring this field. By safely requeueing Rollup in conjunction with this number, we ensure no query limit is ever hit.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Configure this number to decide how many queries Rollup is allowed to issue before restarting in another context. Consider the downstream query needs when your parent objects are updated when configuring this field</inlineHelpText>
+        <label>Max Number Of Queries</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxParentRowsUpdatedAtOnce__c</fullName>
+        <description>The maximum number of parent rows that can be updated in a single transaction. Otherwise, Rollup splits the parent items evenly and updates them in separate transactions.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The maximum number of parent rows that can be updated in a single transaction. Otherwise, Rollup splits the parent items evenly and updates them in separate transactions.</inlineHelpText>
+        <label>Max Parent Rows Updated At Once</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxRollupRetries__c</fullName>
+        <defaultValue>100</defaultValue>
+        <description>Use in conjunction with Max Query Rows. This determines the maximum possible rollup jobs (either batched or queued) that can be spawned from a single overall rollup operation. Default is 100.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Use in conjunction with Max Query Rows. This determines the maximum possible rollup jobs (either batched or queued) that can be spawned from a single overall rollup operation. Default is 100.</inlineHelpText>
+        <label>Max Rollup Retries</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShouldAbortRun__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Use this field to turn off individual Rollups on the fly.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Use this field to turn off individual Rollups on the fly.</inlineHelpText>
+        <label>Should Abort Run</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ShouldRunAs__c</fullName>
+        <description>Determines which async or sync context the Rollup will run in. Default is &quot;Queueable&quot;</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Determines which async or sync context the Rollup will run in. Default is &quot;Queueable&quot;</inlineHelpText>
+        <label>Should Run As</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Queueable</fullName>
+                    <default>true</default>
+                    <label>Queueable</label>
+                </value>
+                <value>
+                    <fullName>Batchable</fullName>
+                    <default>false</default>
+                    <label>Batchable</label>
+                </value>
+                <value>
+                    <fullName>Synchronous Rollup</fullName>
+                    <default>false</default>
+                    <label>Synchronous Rollup</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>TriggerOrInvocableName__c</fullName>
+        <description>The API name for the record is too short; use the pattern &quot;trigger_fieldOnCalcItem_to_rollupFieldOnTarget_rollup&quot; - for example: &apos;trigger_opportunity_stagename_to_account_name_rollup&apos; (use lowercase on the field names). If there is a matching Rollup Control record, those rules will be used. If you are using the &quot;batch&quot; method in Rollup, use this pattern instead: &quot;trigger_batch_objectName_rollup&quot;, for example: &quot;trigger_batch_opportunity_rollup&quot; to set controls for the whole thing. Individual Rollup Control records override the settings for the batch they happen to be in, with the exception of the override flag for &quot;Should Abort Run&quot;, which always cancels the whole thing.</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>The API name for the record is too short; use the pattern &quot;trigger_fieldOnCalcItem_to_rollupFieldOnTarget_rollup&quot; - for example: &apos;trigger_opportunity_stagename_to_account_name_rollup&apos; (use lowercase on the field names). If there is a matching Rollup Control record, those rules will be used. If you are using the &quot;batch&quot; method in Rollup, use this pattern instead: &quot;trigger_batch_objectName_rollup&quot;, See field description for more.</inlineHelpText>
+        <label>Trigger Or Invocable Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Rollup Control</label>
+    <pluralLabel>Rollup Controls</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
