@@ -1352,7 +1352,7 @@ global without sharing virtual class Rollup {
         QueryWrapper queryWrapper = isIntermediateRollupForGrandparent == false
           ? getParentWhereClause(
               calcItems,
-              meta.LookupFieldOnLookupObject__c,
+              (calcItemSObjectType == Task.SObjectType || calcItemSObjectType == Event.SObjectType)?meta.LookupFieldOnCalcItem__c:meta.LookupFieldOnLookupObject__c,
               meta.LookupObject__c,
               meta.LookupFieldOnCalcItem__c,
               meta.GrandparentRelationshipFieldPath__c,
